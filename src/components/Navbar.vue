@@ -10,11 +10,14 @@
                         <router-link class="link" :to="link.path">{{link.name}}</router-link>
                     </li>
                 </ul>
+
+                <transition name="fade" appear>
+                    <MenuIcon class="menuIcon" v-if="Mobile && !MobileNavbar" v-on:ToogleNavMobile="ToogleNavMobile" />
+                </transition>
             </nav>
 
-            <transition name="fade" appear>
-                <MenuIcon class="menuIcon" v-if="Mobile && !MobileNavbar" v-on:ToogleNavMobile="ToogleNavMobile" />
-            </transition>
+
+
 
             <transition appear name="bounce" enter-to-class="animate__animated animate__backInUp"
                 enter-active-class="animate__animated animate__backInUp"
@@ -116,9 +119,18 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    
+    .menuIcon {
+        cursor: pointer;
+        width: 32px;
+        margin-top: 10px;
+    }
+    
     .logo {
         cursor: pointer;
         margin-top: 10px;
+        margin-left: 10px;
 
         .logo-word {
             font-family: 'Varela Round', sans-serif;
@@ -132,23 +144,30 @@ nav {
     }
 
     .links {
-        min-width: 400px;
         display: flex;
         list-style: none;
         justify-content: space-evenly;
         align-items: center;
 
         li {
+            
+            margin-right: 1.5rem;
             .link {
                 text-decoration: none;
                 color: #2c3e50;
                 text-transform: uppercase;
-                font-weight: 600;
+                font-weight:300;
+                font-family: 'Varela Round', sans-serif;
 
                 &.router-link-exact-active {
                     color: #42b983;
                 }
+
+            
             }
+                &:last-child{
+                    margin-right: 0;
+                }
         }
     }
 }
@@ -156,17 +175,11 @@ nav {
 
 
 
-header {
-    position: relative;
-    z-index: 3;
 
-    .menuIcon {
-        position: absolute;
-        top: 20%;
-        right: 0;
-        transform: translate(-50%, 0);
-        cursor: pointer;
-    }
+header {
+    z-index: 3;
+    background: #fff;
+    
 
     .link {
         text-decoration: none;
@@ -174,6 +187,7 @@ header {
         text-transform: uppercase;
         font-weight: 600;
         cursor: pointer;
+        font-family: 'Varela Round', sans-serif;
 
         &:hover {
             color: #42b983;
@@ -198,8 +212,10 @@ header {
     .close {
         flex: .1;
         position: relative;
-        text-align: right;
         padding: 0 5px;
+        display: flex;
+        justify-content: end;
+        align-items: flex-start;
 
     }
 
@@ -272,5 +288,20 @@ header {
         transform: scale(1);
         }
     } */
+
+@media only screen and (max-width: 800px){
+  .container{
+    width: 100% !important;
+  }
+
+  header{
+      
+      nav{
+          display: flex ;
+          justify-content: space-between;
+          align-items: center;
+      }
+  }
+}
 
 </style>

@@ -1,7 +1,12 @@
 <template>
   <div id="app">
-      <Navbar/>
+    <Navbar/>
+    <transition 
+    enter-active-class="animate__animated animate__fadeIn"
+    leave-active-class="animate__animated animate--fadeOut"
+    mode="out-in">
     <router-view/>
+    </transition>
   </div>
 </template>
 
@@ -42,11 +47,17 @@ export default {
 @media only screen and (max-width: 800px){
   .container{
     width: 100%;
-    min-width: none;
+    min-width: 0;
     margin: 0 auto;
   }
 }
-
+@media only screen and (max-width:700px){
+  .container{
+    width: 100%;
+    min-width: 0;
+    margin: 0 auto;
+  }
+}
 #nav {
   a {
     font-weight: bold;

@@ -21,7 +21,7 @@ export default {
   data(){
     return{
       description:"Estelle is a  author and speaker. She speaks and leads workshops on web development all over the world. ",
-      posts:[
+      /* posts:[
         {
           at:"07/08/21 - 4h30 pm",
           liked:{
@@ -189,7 +189,12 @@ export default {
             message:"I Like this :) ...."
           }],
         },
-      ]
+      ] */
+    }
+  },
+  computed:{
+    posts(){
+      return this.$store.getters.getPosts
     }
   }
 }

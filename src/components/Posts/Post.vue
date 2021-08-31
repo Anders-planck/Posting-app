@@ -2,7 +2,7 @@
     <div class="post">
         <ImageView :images="post.images" />
         <div class="info">
-            <PostAuthorInfo :author="post.author" />
+            <PostAuthorInfo :post="post" />
         </div>
 
         <div class="info">

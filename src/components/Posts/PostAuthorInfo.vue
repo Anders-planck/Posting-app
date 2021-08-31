@@ -1,15 +1,15 @@
 <template>
     <div class="PostAuthorInfo">
         <div class="foto">
-            <img :src="author.foto" 
+            <img :src="post.author.foto" 
             alt="" >
         </div>
         <div class="infoAuthor">
             <span class="alias">
-                {{author.name}}
+                {{post.author.name}}
             </span>
             <p>
-                <span class="tag" v-for="tag in author.tags" :key="tag">
+                <span class="tag" v-for="tag in post.author.tags" :key="tag">
                     <span class="hastag">#</span>{{tag}}
                 </span>
 
@@ -22,7 +22,7 @@
 export default {
     name:'PostAuthorInfo',
     props:{
-        author:{
+        post:{
             type:Object,
             require:true
         }
