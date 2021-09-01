@@ -2,7 +2,7 @@
     <div>
         <transition-group v-if="posts!=0" appear name="listPost" enter-active-class="animate__animated animate__fadeInDown"
             leave-active-class="animate__animated animate__bounceOut" class="listPosts" tag="div">
-            <Post v-for="(post,index)  in posts" :key="index" :post="post" />
+            <Post v-for="(post,index)  in posts"  :key="index" :post="post" />
         </transition-group>
 
         <div v-if="posts.length==0" class="empty">

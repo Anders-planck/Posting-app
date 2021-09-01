@@ -105,6 +105,10 @@ export default {
 margin:0;
 padding: 0;    
 }
+
+ul{
+    list-style: none  !important;;
+}
 .header {
     position: sticky;
     top: 0;

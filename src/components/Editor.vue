@@ -51,5 +51,6 @@ export default {
 <style scoped lang="scss">
 .text{
   font-family: 'Varela Round', sans-serif;
+  font-size: 1rem !important;
 }
 </style>

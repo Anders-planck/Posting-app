@@ -2,10 +2,10 @@
   <div id="app">
     <Navbar/>
     <transition 
-    enter-active-class="animate__animated animate__fadeIn"
-    leave-active-class="animate__animated animate--fadeOut"
-    mode="out-in">
-    <router-view/>
+      enter-active-class="animate__animated animate__fadeIn"
+      leave-active-class="animate__animated animate--fadeOut"
+      mode="out-in">
+      <router-view/>
     </transition>
   </div>
 </template>
@@ -34,10 +34,10 @@ export default {
   font-family: 'Klee One', cursive;
   
 }
-*{
-  margin: 0;
-  padding: 0;
+ol, ul {
+  list-style: initial !important;
 }
+ 
 .container{
   width: 50%;
   min-width: 700px;

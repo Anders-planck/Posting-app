@@ -59,15 +59,15 @@
                 description
                 <span class="require">*</span>
             </label>
-            <Editor inputName="description" :post="post.description" class="mt-2"/>
+            <Editor inputName="description" :post="post" class="mt-2"/>
         </div>
 
         <div class="mb-3 form-group checkbox">
-            <label for="title" class="label check">
+            <label for="online" class="label check">
                 Online
                 <span class="require">*</span>
             </label>
-            <input type="checkbox"  v-model="post.online" class="check" />
+            <input type="checkbox" id="online" name="online"  v-model="post.online" class="check" />
         </div>
     
     </div>

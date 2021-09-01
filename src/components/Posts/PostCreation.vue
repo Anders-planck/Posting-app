@@ -91,7 +91,6 @@ export default {
     computed:{
         post(){
             return this.$store.getters.getPost
-
         },
         step(){
             return this.$store.getters.getStep

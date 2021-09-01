@@ -9,10 +9,9 @@
                 {{post.author.name}}
             </span>
             <p>
-                <span class="tag" v-for="tag in post.author.tags" :key="tag">
+                <span class="tag" v-for="tag in post.tags" :key="tag">
                     <span class="hastag">#</span>{{tag}}
                 </span>
-
             </p>
         </div>
     </div>

@@ -1,26 +1,30 @@
 <template>
   <div class="PostValidate">
-      <h1 class="title" v-if="online">Do you want to create this post and post it ?</h1>
+      <h1 class="title" v-if="post.online">Do you want to create this post and post it ?</h1>
 
-      <h1 class="title" v-if="!online">Do you want to create this post and post it later?</h1>
+      <h1 class="title" v-if="!post.online">Do you want to create this post and post it later?</h1>
     
       <p class="confirm mt-6">
-          Confirm 
-          <input type="checkbox" v-model="confirm"/>
-      </p>
+          <p class="mb-3 form-group checkbox">
+            <label for="confirm" class="label check">
+                Confirm
+            </label>
+            <input type="checkbox" id="confirm" name="confirm"  v-model="confirm" class="confirm" />
+        </p>
       <div class="button">
-        <button  :class="{'disable': !confirm}"> Create Post</button>
+        <button @click="addPost" :class="{'disable': !confirm}">Create Post</button>
       </div>
   </div>
 </template>
 
 <script>
 import Title from '@/components/Title'
+import moment from 'moment'
 export default {
     name:'PostValidate',
     props:{
-        online:{
-            type:Boolean,
+        post:{
+            type:Object,
             require:true
         }
     },
@@ -32,8 +36,21 @@ export default {
             confirm:false
         }
     },
-    components:{
-        
+    computed:{
+            posts(){
+                return this.$store.getters.getPosts
+            },
+    },
+    methods:{
+        addPost(){
+            this.confirm=false
+            this.post.id=this.posts.length
+            this.post.at= moment().format('L - h:mm a')
+            this.$store.commit('addPost',this.post)
+            this.$store.commit('resetPost')
+            this.$store.commit('setStep',1)
+            this.$router.push('/')
+        }
     }
 }
 </script>
@@ -74,4 +91,21 @@ export default {
         font-weight: bold;
         font-size: 2rem;
     }
+
+
+.label{
+    font-family: 'Varela Round', sans-serif;
+    font-weight: 900;
+    margin-bottom: 2px;
+    font-size: 1.2rem;
+    position: relative;
+    text-transform: capitalize;
+    display: inline-block;
+}
+
+
+
+.check{
+    margin-right: 20px;
+}
 </style>

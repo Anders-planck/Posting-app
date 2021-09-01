@@ -61,13 +61,11 @@ export default {
         },
         getColor(){
             if(this.liked.state){
-                console.log('fill')
                 return '#e74c3c'
             }
         },
         getFill(){
             if(this.liked.state){
-                console.log('fill')
                 return  '#e74c3c'
             }
         },
@@ -84,7 +82,6 @@ export default {
         getLike(){
             if(this.$props.like){
                 this.liked=this.$props.like
-                console.log(this.liked)
                 return
             }
             this.liked.state=false

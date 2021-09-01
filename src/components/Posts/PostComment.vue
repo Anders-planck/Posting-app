@@ -7,11 +7,11 @@
             <span class="alias">
                 {{comment.author.name}}
             </span>
-            <p>
+            <!-- <p>
                 <span class="tag" v-for="tag in comment.author.tags" :key="tag">
                     <span class="hastag">#</span>{{tag}}
                 </span>
-            </p>
+            </p> -->
             <p class="message">
                 {{comment.message}}
             </p>

@@ -7,19 +7,19 @@
 
         <div class="info">
             <PostTitle :title="post.title" />
-            <PostDescription :description="post.description" />
+            <PostDescription :state="state" :description="post.description" />
         </div>
 
         <div class="footer">
             <PostFooter :reply="post.comments" :at="post.at" :like="post.liked" @toogleStateComments="toogleAreaComment"/>
         </div>
-        
+
         <transition name="commentArea" appear enter-active-class="animate__animated animate__fadeInDown animate__bouncIn" leave-active-class="animate__animated animate__bounceOut">
             <div class="comments info" v-if="showAreaComment">
-                <PostComment class="Comment" v-for="(comment,index) in post.comments" :comment="comment" :key="index"/>
+                <PostComment class="Comment" v-for="(comment,index) in post.comments" :comment="comment"  :key="index"/>
                 <div class="form">
                     <textarea v-model="comment" :placeholder="placeholder"></textarea>
-                    <div class="Send">
+                    <div class="Send" @click="addComment">
                         <SendIcon/>
                     </div>
                 </div>
@@ -43,6 +43,11 @@ export default {
         post:{
             type:Object,
             require:true
+        },
+        state:{
+            type:String,
+            require:false,
+            default:'view'
         }
     },
     components:{
@@ -63,8 +68,21 @@ export default {
     },
     methods:{
         toogleAreaComment(){
-            console.log('bon')
             this.showAreaComment=!this.showAreaComment
+        },
+        addComment(){
+            const c = {
+                id: this.post.id,
+                message:'',
+                author:{
+                    name:'Planck Anders',
+                    foto:'https://scontent-mxp1-1.xx.fbcdn.net/v/t1.6435-9/69245733_725030284603206_5683149216247971840_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=2wstdYB3PNQAX89jAUm&tn=L8SKpZX-hIdGHkiX&_nc_ht=scontent-mxp1-1.xx&oh=9067fd6a9e1a4aa9a72add11944ddd40&oe=614F37FD',
+                },
+            }
+
+            c.message=this.comment
+            this.comment=''
+            this.$store.commit('setComment',c);
         }
     }
 }

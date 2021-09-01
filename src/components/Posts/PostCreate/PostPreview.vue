@@ -3,7 +3,7 @@
         <div class="state">
             
         </div>
-            <Post :post="post" class="post"/>
+            <Post :post="post"  class="post"/>
     </div>
 </template>
 
