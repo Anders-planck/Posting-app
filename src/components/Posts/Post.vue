@@ -124,15 +124,15 @@ export default {
                 textarea{
                     padding: 0.5rem;
                     width: calc(100% - 100px);
-                    min-height: 100px;
-                    height: 100px;
+                    min-height: 90px;
+                    height: 90px;
                     max-height: 100px;
-                    border:1px solid  rgba(0, 0, 0, 0.103);
+                    border:1px dashed rgba(0, 0, 0, 0.103);
                     font-family: 'Hind Siliguri', sans-serif;
                     
                 }
                 .Send{
-                    height: 100px;
+                    height: 90px;
                     width: 100px;
                     display: flex;
                     justify-content: center;
