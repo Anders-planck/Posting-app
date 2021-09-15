@@ -1,11 +1,8 @@
 <template>
   <div id="app">
     <Navbar/>
-    <transition 
-      enter-active-class="animate__animated animate__fadeIn"
-      leave-active-class="animate__animated animate--fadeOut"
-      mode="out-in">
-      <router-view/>
+    <transition mode="out-in" name="form" appear enter-active-class="animate__animated animate__fadeIn animate__faster">
+    <router-view/>
     </transition>
   </div>
 </template>
@@ -32,19 +29,18 @@ export default {
 #app {
   color: #2c3e50;
   font-family: 'Klee One', cursive;
-  
 }
 ol, ul {
   list-style: initial !important;
 }
  
 .container{
-  width: 50%;
-  min-width: 700px;
+  width: 650px;
+  min-width: 650px;
   margin: 0 auto;
 }
 
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 900px){
   .container{
     width: 100%;
     min-width: 0;

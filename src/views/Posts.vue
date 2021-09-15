@@ -1,8 +1,9 @@
 <template>
   <div class="posts container">
-      <div class="actions">
-        <Actions/>
+      <div class="postsStatus">
+        <PostsStatusView/>
       </div>
+
       <div class="postsView">
         <PostsView/>
       </div>
@@ -13,12 +14,14 @@
 // @ is an alias to /src
 import Actions from "@/components/Posts/Actions"
 import PostsView from "@/components/Posts/PostsView"
+import PostsStatusView from "@/components/Posts/PostsStatusView"
 
 export default {
   name: 'Posts',
   components: {
     Actions,
-    PostsView
+    PostsView,
+    PostsStatusView
   }
 }
 </script>
@@ -26,22 +29,17 @@ export default {
 <style scoped lang="scss">
 
   .posts{
-    margin: 5rem auto;
-    display: flex;
-    min-height: 100vh;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: flex-start;
-    padding: 1rem ;
-    padding-top: 2rem;
-    box-shadow: 0px 7px 27px 0px #E4E4E4;
-    z-index: 1;
-    
-    .actions{
-      width: 250px;
-    }
+    width: 650px;
+  
     .postsView{
-      width: 650px;
+      width: 100%;
+    }
+
+    .postsStatus{
+      width: 100%;
+      margin-top: 3rem;
+      margin-bottom: 5rem;
+      background: #ffffff;
     }
   }
 </style>

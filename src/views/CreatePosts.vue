@@ -22,8 +22,6 @@ export default {
 
 .createPosts{
     margin: 5rem auto;
-    padding: 5rem ;
-    
 }
 
 .title{

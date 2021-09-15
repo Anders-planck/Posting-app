@@ -82,7 +82,7 @@ export default {
 
             c.message=this.comment
             this.comment=''
-            this.$store.commit('setComment',c);
+            this.$store.commit('setCommentPost',c);
         }
     }
 }
@@ -91,11 +91,12 @@ export default {
 <style scoped lang="scss">
     .post{
         margin-top: 2rem;
-        padding: 1rem;
-        box-shadow: 3px 8px 34px 2px rgba(44, 62, 80, 0.080);
+        padding: 1rem;/* 
+        box-shadow: 3px 8px 34px 2px rgba(44, 62, 80, 0.080); */
         border-radius:5px;
         display: flex;
         flex-direction: column;
+        border: 1px solid #d1d8e0;
 
 
         .info{

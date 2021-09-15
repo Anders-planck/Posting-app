@@ -1,5 +1,5 @@
 <template>
-    <div class="PostCreation container">
+    <div class="PostCreation">
         <div class="menu">
             <div class="menuItem cursor-pointer" @click="position(1)" :class="{'active':step==1}">
                 Create
@@ -12,8 +12,7 @@
             </div>
         </div>
         <div class="content">
-            <transition mode="out-in" name="form" appear enter-active-class="animate__animated animate__fadeIn"
-                leave-active-class="animate__animated animate__zoomOutLeft animate__faster">
+            <transition mode="out-in" name="form" appear enter-active-class="animate__animated animate__fadeIn animate__faster">
                 <div class="form" v-show="step==1">
                     <Form state="create" :post="post" />
                     <div class="arrow">
@@ -24,8 +23,7 @@
                     </div>
                 </div>
             </transition>
-            <transition mode="out-in" name="preview" appear enter-active-class="animate__animated animate__fadeIn"
-                leave-active-class="animate__animated animate__zoomOutLeft animate__faster">
+            <transition mode="out-in" name="preview" appear enter-active-class="animate__animated animate__fadeIn animate__faster">
                 <div class="form" v-show="step== 2">
                     <PostPreview :post="post" />
                     <div class="arrow">
@@ -42,8 +40,7 @@
                     </div>
                 </div>
             </transition>
-            <transition mode="out-in" name="preview" appear enter-active-class="animate__animated animate__fadeIn"
-                leave-active-class="animate__animated animate__zoomOutLeft animate__faster">
+            <transition mode="out-in" name="preview" appear enter-active-class="animate__animated animate__fadeIn animate__faster">
                 <div class="form" v-show="step== 3">
                     <PostValidate :post="post"/>
                     <div class="arrow">
@@ -113,19 +110,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+:root {
+  --animate-delay: 0.5s;
+}
 .PostCreation{
-    border: 2px solid #000;
+    border: 1px solid #d1d8e0;
     border-radius: 5px;
-    max-width: 900px;
+    margin: 0 auto;
+    max-width: 700px;
     background: #fff;
-    box-shadow: 0px 7px 27px 0px #E4E4E4;
+    box-shadow: 0px 7px 27px 0px #e4e4e4ea;
     .menu{
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
         .menuItem{
-            padding: 1rem;
+            padding: 0.8rem;
             width: 33.33%;
             border: 1px solid rgba(0, 0, 0, 0.185);
             border-top: none;
@@ -137,7 +138,7 @@ export default {
     }
 }
 .active{
-    border-bottom: 8px solid #42b983e1 !important;
+    border-bottom: 4px solid #42b983e1 !important;
 }
 
 .direction{

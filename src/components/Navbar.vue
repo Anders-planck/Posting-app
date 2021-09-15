@@ -6,8 +6,16 @@
                     <router-link to="/" class="logo-word">POSTING</router-link>
                 </div>
                 <ul class="links" v-if="!Mobile">
-                    <li v-for="link in links" :key="link.path">
-                        <router-link class="link" :to="link.path">{{link.name}}</router-link>
+                    <li v-for="link in links" :key="link.name">
+                        <router-link class="link" :to="link.path">
+                            <HomeIcon v-if="link.name=='posts'"/>
+                            <AddIcon v-if="link.name=='create post'"/>
+                            <LikeIcon v-if="link.name=='notifications'"/>
+                            <SmsArrowIcon v-if="link.name=='conversations'"/>
+                            <SignUpIcon v-if="link.name=='signup'"/>
+                            <SignInIcon v-if="link.name=='signin'"/>
+                            <LogoutIcon v-if="link.name=='logout'"/>
+                        </router-link>
                     </li>
                 </ul>
 
@@ -24,10 +32,10 @@
                 leave-active-class="animate__animated animate__bounceOutUp" v-if="Mobile && MobileNavbar">
                 <div class="MobileLinks">
                     <div class="close">
-                        <CloseIcon class="closeIcon" color="#fff" v-on:ToogleNavMobile="ToogleNavMobile" />
+                        <CloseIcon class="closeIcon" color="#000" v-on:ToogleNavMobile="ToogleNavMobile" />
                     </div>
                     <ul>
-                        <li v-for="link in links" :key="link.path">
+                        <li v-for="link in links" :key="link.name" @click="ToogleNavMobile">
                             <router-link class="link" :to="link.path">{{link.name}}</router-link>
                         </li>
                     </ul>
@@ -39,13 +47,27 @@
 
 <script>
 import MenuIcon from "@/components/Icons/MenuIcon"
+import LogoutIcon from "@/components/Icons/LogoutIcon"
+import SignInIcon from "@/components/Icons/SignInIcon"
+import SignUpIcon from "@/components/Icons/SignUpIcon"
+import HomeIcon from "@/components/Icons/HomeIcon"
 import CloseIcon from "@/components/Icons/CloseIcon"
+import AddIcon from "@/components/Icons/AddIcon"
+import LikeIcon from "@/components/Icons/LikeIcon"
+import SmsArrowIcon from '@/components/Icons/SmsArrowIcon.vue'
 
 export default {
     name:'Navbar',
     components:{
         MenuIcon,
         CloseIcon,
+        SignInIcon,
+        SignUpIcon,
+        HomeIcon,
+        AddIcon,
+        LikeIcon,
+        SmsArrowIcon,
+        LogoutIcon
     },
     data (){
         return{
@@ -55,16 +77,35 @@ export default {
             window:null,
             links:[
                 {
-                    name:"Posts",
+                    name:'posts',
                     path:"/",
                 },
+
                 {
-                    name:"Sign Up",
+                    name:"create post",
+                    path:"/createPosts",
+                },
+
+                {
+                    name:"notifications",
+                    path:"#",
+                },
+
+                {
+                    name:"conversations",
+                    path:"#r",
+                },
+                {
+                    name:"signup",
                     path:"#",
                 },
                 {
-                    name:"Sign In",
-                    path:"#r",
+                    name:"signin",
+                    path:"#",
+                },
+                {
+                    name:"logout",
+                    path:"#",
                 },
             ],
         }
@@ -111,12 +152,13 @@ ul{
 }
 .header {
     position: sticky;
-    top: 0;
-    box-shadow: 0px 7px 27px 0px #E4E4E4;
+    top: 0;/* 
+    box-shadow: 0px 7px 27px 0px #E4E4E4; */
     margin: 0;
     padding: 5px;
     background: #fff;
     z-index: 99;
+    border: 1px solid #d1d8e0;
 }
 
 nav {
@@ -141,8 +183,8 @@ nav {
             font-weight: 900;
             color: #2c3e50;
             text-decoration: none;
-            font-size: 2rem;
-            letter-spacing: 0.5rem;
+            font-size: 1.5rem;
+            letter-spacing: 0.3rem;
             text-shadow: -3px 2px 6px rgba(44, 62, 80, 0.57);
         }
     }
@@ -189,7 +231,7 @@ header {
         text-decoration: none;
         color: #2c3e50;
         text-transform: uppercase;
-        font-weight: 600;
+        font-weight: normal;
         cursor: pointer;
         font-family: 'Varela Round', sans-serif;
 
@@ -201,11 +243,12 @@ header {
 }
 
 .MobileLinks {
-    background: #000000;
+    background: #fff;
+    border: 1px solid #d1d8e0;
     position: fixed;
     top: 0;
     left: 0;
-    width: 241px;
+    width: 100%;
     height: 100vh;
     padding: 10px 1px;
     display: flex;
@@ -226,7 +269,7 @@ header {
     ul {
         margin: 0;
         padding: 0;
-        width: 240px;
+        width: 100%;
         list-style: none;
         display: grid;
         grid-template-columns: auto;
@@ -234,7 +277,7 @@ header {
 
         li {
             height: 60px;
-            width: 240px;
+            width: 100%;
 
             //border: 1px solid #121213;
             //border-left: none;
@@ -242,13 +285,13 @@ header {
                 display: block;
                 width: 100%;
                 height: 100%;
-                color: white;
+                color: #2c3e50;
                 display: flex;
-                justify-content: flex-start;
+                justify-content: center;
                 padding: 10px;
-                border-top: 1px solid white;
+                border-top: 1px solid #d1d8e0;
                 align-items: center;
-                font-size: 1.4rem;
+                font-size: 1.2rem;
                 transition: all 0.2s ease-in-out;
 
                 &.router-link-exact-active {
@@ -258,7 +301,7 @@ header {
 
             &:last-child {
                 .link {
-                    border-bottom: 1px solid white;
+                    border-bottom: 1px solid #d1d8e0;
                 }
             }
         }

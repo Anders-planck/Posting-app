@@ -17,8 +17,7 @@
                     <AddIcon size="25px"/>
                 </div>
             </div>
-            <transition-group name="listTag" enter-active-class="animate__animated animate__bounceIn"
-            leave-active-class="animate__animated animate__bounceOut">
+            <transition-group name="listTag" enter-active-class="animate__animated animate__backInLeft animate__faster">
             <div v-for="(tag,index) in post.tags" :key="index" class="fields mt-3 form-group">
                 <label :for="tag" class="label add text-gray-400">
                     <span class="text-gray-500">#</span>{{index+1}}
@@ -31,18 +30,28 @@
             </transition-group>
         </div>
 
+        
+        <div class="mb-6 form-group">
+            <label for="Description" class="label">
+                description
+                <span class="require">*</span>
+            </label>
+            <Editor inputName="description" :post="post" class="mt-2"/>
+        </div>
+
+        
+
         <div class="mb-6 form-group">
             <div class="fields">
                 <label for="title" class="label">
                     Images
                 </label>
-                <div class="add"  @click="AddImage">
+                <!-- <div class="add"  @click="AddImage">
                     <AddIcon size="25px"/>
-                </div>
+                </div> -->
             </div>
 
-            <transition-group name="listTag" enter-active-class="animate__animated animate__bounceIn"
-            leave-active-class="animate__animated animate__bounceOut">
+            <!-- <transition-group name="listImage" enter-active-class="animate__animated animate__backInLeft animate__faster">
             <div v-for="(image,index) in post.images" :key="index" class="fields mt-3 form-group">
                 <label :for="image" class="label add text-gray-400">
                     <span class="text-gray-500">#</span>{{index+1}}
@@ -52,14 +61,8 @@
                     <CloseIcon size="23px"/>
                 </div>
             </div>
-            </transition-group>
-        </div>
-        <div class="mb-6 form-group">
-            <label for="Description" class="label">
-                description
-                <span class="require">*</span>
-            </label>
-            <Editor inputName="description" :post="post" class="mt-2"/>
+            </transition-group> -->
+            <vue-dropzone ref="myVueDropzone" id="dropzone" :options="dropzoneOptions"></vue-dropzone>
         </div>
 
         <div class="mb-3 form-group checkbox">
@@ -69,7 +72,6 @@
             </label>
             <input type="checkbox" id="online" name="online"  v-model="post.online" class="check" />
         </div>
-    
     </div>
 </template>
 
@@ -77,6 +79,9 @@
 import Editor from "@/components/Editor"
 import AddIcon from '@/components/Icons/AddIcon'
 import CloseIcon from '@/components/Icons/CloseIcon'
+import vue2Dropzone from 'vue2-dropzone'
+import 'vue2-dropzone/dist/vue2Dropzone.min.css'
+
 export default {
     name:'Form',
     props:{
@@ -93,11 +98,22 @@ export default {
         Editor,
         AddIcon,
         CloseIcon,
+        vueDropzone: vue2Dropzone
     },
     created(){
         // this.inizialize()
     },
     
+    data(){
+        return {
+            dropzoneOptions: {
+                url: 'https://httpbin.org/post',
+                thumbnailWidth: 150,
+                maxFilesize: 0.5,
+                headers: { "My-Awesome-Header": "header value" }
+            }
+        }
+    },
     methods:{
         /* inizialize(){
             if(this.$props.state=='create' && this.$props.post==null){
@@ -142,7 +158,7 @@ export default {
     font-family: 'Varela Round', sans-serif;
     font-weight: 900;
     margin-bottom: 2px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     position: relative;
     text-transform: capitalize;
     display: inline-block;

@@ -1,7 +1,7 @@
 <template>
   <div class="postsView">
-    <Title title="Events"/>
-    <Description :description="description"/>
+    <!-- <Title title="Events"/> -->
+    <!--   <Description :description="description"/> -->
     <ListPosts :posts="posts"/>
   </div>
 </template>

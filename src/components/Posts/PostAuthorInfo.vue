@@ -1,8 +1,7 @@
 <template>
     <div class="PostAuthorInfo">
         <div class="foto">
-            <img :src="post.author.foto" 
-            alt="" >
+            <img :src="post.author.foto" />
         </div>
         <div class="infoAuthor">
             <span class="alias">

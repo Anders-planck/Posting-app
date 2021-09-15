@@ -6,7 +6,8 @@
         </transition-group>
 
         <div v-if="posts.length==0" class="empty">
-            <Title title="No Post   :("/>
+            <NothingIcon size="100px"/>
+            <Title title="NO POST FIND" style="display:block"/>
         </div>
     </div>
 </template>
@@ -14,6 +15,7 @@
 <script>
 import Post from "@/components/Posts/Post"
 import Title from '@/components/Title'
+import NothingIcon from "@/components/Icons/NothingIcon"
 
 export default {
     name:'ListPosts',
@@ -25,7 +27,8 @@ export default {
     },
     components:{
         Post,
-        Title
+        Title,
+        NothingIcon
     },
 }
 </script>
@@ -33,6 +36,7 @@ export default {
 <style lang="scss" scoped>
 .empty{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;

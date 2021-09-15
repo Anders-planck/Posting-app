@@ -203,7 +203,7 @@ img {
         height: 210px !important;
         transition: all 0.2s ease-in-out !important;
         &:hover{
-            transform:scale(1.7);
+            transform:scale(1.3);
             object-fit: contain;
             z-index: 15;
             border-radius: 10px !important;
