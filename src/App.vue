@@ -35,8 +35,7 @@ ol, ul {
 }
  
 .container{
-  width: 650px;
-  min-width: 650px;
+  width: 1000px;
   margin: 0 auto;
 }
 

@@ -1,10 +1,14 @@
 <template>
     <div class="header">
-        <header class="container">
+        <header >
             <nav>
                 <div class="logo">
                     <router-link to="/" class="logo-word">POSTING</router-link>
                 </div>
+
+
+                <input type="text" class="search" placeholder="search"/>
+
                 <ul class="links" v-if="!Mobile">
                     <li v-for="link in links" :key="link.name">
                         <router-link class="link" :to="link.path">
@@ -19,11 +23,13 @@
                     </li>
                 </ul>
 
-                <transition name="fade" appear>
-                    <MenuIcon class="menuIcon" v-if="Mobile && !MobileNavbar" v-on:ToogleNavMobile="ToogleNavMobile" />
-                </transition>
-            </nav>
+                <div class="menuIconH" v-if="Mobile && !MobileNavbar">
+                    <transition name="fade" appear>
+                        <MenuIcon class="menuIcon"  v-on:ToogleNavMobile="ToogleNavMobile" />
+                    </transition>
+                </div>
 
+            </nav>
 
 
 
@@ -73,7 +79,7 @@ export default {
         return{
             Mobile:null,
             MobileNavbar:null,
-            widthScreen:800,
+            widthScreen:1000,
             window:null,
             links:[
                 {
@@ -151,53 +157,83 @@ ul{
     list-style: none  !important;;
 }
 .header {
+width: 100vw;
     position: sticky;
     top: 0;/* 
     box-shadow: 0px 7px 27px 0px #E4E4E4; */
     margin: 0;
-    padding: 5px;
     background: #fff;
     z-index: 99;
     border: 1px solid #d1d8e0;
+    padding:5px;
 }
+
+
 
 nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    
-    .menuIcon {
+    height: 54px; 
+    width: 1000px;
+    margin: 0 auto;
+
+    .menuIconH{
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        .menuIcon {
         cursor: pointer;
         width: 32px;
-        margin-top: 10px;
+    }
     }
     
+
+    .search{
+        border: 1px solid #d1d8e0;
+        margin: 0;
+        padding: 1px;
+        flex: 0.33;
+        font-size: 12px;
+
+        // padding: 1px 1px 0px 1.5rem;
+        &::placeholder{
+            text-align: center;
+            font-family: sans-serif;
+            text-transform: capitalize;
+            font-size: 12px;
+        }
+        &:focus{
+            text-align: left;
+            border:1px solid #d1d8e0 !important;
+            outline: none;
+            &::placeholder{
+                text-align:left;
+            }
+        }
+    }
     .logo {
         cursor: pointer;
-        margin-top: 10px;
-        margin-left: 10px;
-
+        
         .logo-word {
             font-family: 'Varela Round', sans-serif;
             font-weight: 900;
             color: #2c3e50;
             text-decoration: none;
             font-size: 1.5rem;
-            letter-spacing: 0.3rem;
-            text-shadow: -3px 2px 6px rgba(44, 62, 80, 0.57);
+            // letter-spacing: 0.3rem;
+            // text-shadow: -3px 2px 6px rgba(44, 62, 80, 0.57);
         }
     }
 
-    .links {
+    .links { 
         display: flex;
         list-style: none;
         justify-content: space-evenly;
         align-items: center;
-
         li {
-            
-            margin-right: 1.5rem;
+            margin-right: 1rem;
             .link {
                 text-decoration: none;
                 color: #2c3e50;
@@ -211,9 +247,9 @@ nav {
 
             
             }
-                &:last-child{
-                    margin-right: 0;
-                }
+            &:last-child{
+                margin-right: 0px;
+            }
         }
     }
 }
@@ -223,9 +259,8 @@ nav {
 
 
 header {
-    z-index: 3;
     background: #fff;
-    
+    width: 100%;
 
     .link {
         text-decoration: none;
@@ -336,16 +371,21 @@ header {
         }
     } */
 
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 1000px){
   .container{
     width: 100% !important;
   }
+  .hearder{
+      width: 100% !important;
+  }
 
   header{
-      
+      width: 100% !important;
       nav{
           display: flex ;
-          justify-content: space-between;
+          width: 100% !important;
+          padding: 0  1rem;
+          justify-content: space-between !important;
           align-items: center;
       }
   }
