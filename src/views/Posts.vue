@@ -32,6 +32,7 @@
       return{
         widthScreen:1000,
         suggestion:false,
+        postsSingleSreen:650,
         window:null,
         className:{
           container:'',
@@ -50,12 +51,15 @@
             if(this.window <= this.widthScreen){
                 this.suggestion=false
                 this.className.container='single'
-                this.className.posts='postsRisize'
+              if(this.window <= this.postsSingleSreen)
+                  this.className.posts='postsRisize'
+              else
+                this.className.posts=''
               console.log(this.suggestion)  
             }else{
                 this.suggestion=true
                 this.className.container=''
-                this.className.posts=''
+              
                 console.log(this.suggestion)
             }
       },
